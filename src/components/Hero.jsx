@@ -1,7 +1,9 @@
 import Spline from "@splinetool/react-spline";
 import { CheckCircle2 } from "lucide-react";
 
-export default function Hero() {
+export default function Hero({ onNavigate }) {
+  const go = (v) => onNavigate && onNavigate(v);
+
   return (
     <section className="relative min-h-[72vh] flex items-center">
       <div className="absolute inset-0">
@@ -22,18 +24,18 @@ export default function Hero() {
             Discover teammates, form project groups, assign tasks, and stay in sync — all in one place.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <a
-              href="#get-started"
+            <button
+              onClick={() => go("signin")}
               className="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white font-medium shadow hover:from-blue-500 hover:to-indigo-500 transition"
             >
               Get started
-            </a>
-            <a
-              href="#explore"
+            </button>
+            <button
+              onClick={() => go("projects")}
               className="inline-flex items-center justify-center px-5 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-white/70 dark:bg-white/5 backdrop-blur hover:bg-white transition"
             >
               Explore public projects
-            </a>
+            </button>
           </div>
           <div className="mt-6 grid sm:grid-cols-3 gap-3 text-sm">
             {[
